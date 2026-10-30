@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { supabase } from "@/lib/supabase";
+import { supabase } from "../lib/supabase";
 
 type Material = {
   id: string;
@@ -33,7 +33,7 @@ export default function Home() {
       {error && <p className="text-red-600">Error: {error}</p>}
       <ul className="space-y-2">
         {materials.map((m) => (
-          <li key={m.id} className="rounded bg-white p-3 shadow">
+          <li key={m.id} className="rounded bg-white p-3 shadow text-gray-900">
             <span className="font-semibold">{m.name}</span>: {m.current_stock}{" "}
             {m.unit}
             {m.current_stock < m.min_stock && (
