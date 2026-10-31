@@ -119,6 +119,9 @@ export default function Home() {
           <p>
             {email} ({role})
           </p>
+          <Link href="/production" className="mr-3 text-amber-800 underline">
+  Antrean produksi
+</Link>
 {isOwner && (
   <>
     <Link href="/orders" className="mr-3 text-amber-800 underline">
