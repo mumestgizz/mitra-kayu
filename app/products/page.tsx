@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { supabase } from "../../lib/supabase";
 
-const CATEGORIES = ["Kursi", "Meja", "Tempat tidur", "Container warung", "Lainnya"];
+const CATEGORIES = ["Kursi", "Meja", "Tempat tidur", "Container warung", "Lemari", "Lainnya"];
 
 type Product = {
   id: string;
