@@ -2,6 +2,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "../lib/supabase";
+import Link from "next/link";
 
 type Material = {
   id: string;
@@ -118,9 +119,14 @@ export default function Home() {
           <p>
             {email} ({role})
           </p>
-          <button onClick={logout} className="text-red-700 underline">
-            Keluar
-          </button>
+          {isOwner && (
+  <Link href="/expenses" className="mr-3 text-amber-800 underline">
+    Pengeluaran
+  </Link>
+)}
+<button onClick={logout} className="text-red-700 underline">
+  Keluar
+</button>
         </div>
       </div>
 
