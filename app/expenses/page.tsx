@@ -25,15 +25,20 @@ const rupiah = (n: number) =>
 export default function Expenses() {
   const router = useRouter();
   const [ready, setReady] = useState(false);
-  const [month, setMonth] = useState(today().slice(0, 7));
+  const [month, setMonth] = useState("");
   const [rows, setRows] = useState<Expense[]>([]);
   const [error, setError] = useState<string | null>(null);
 
-  const [date, setDate] = useState(today());
+  const [date, setDate] = useState("");
   const [category, setCategory] = useState(CATEGORIES[0]);
   const [amount, setAmount] = useState("");
   const [note, setNote] = useState("");
 
+  useEffect(() => {
+  const t = today();
+  setMonth(t.slice(0, 7));
+  setDate(t);
+}, []);
   const load = useCallback(async (m: string) => {
     const [y, mo] = m.split("-").map(Number);
     const start = `${m}-01`;
@@ -72,9 +77,9 @@ export default function Expenses() {
     guard();
   }, [router]);
 
-  useEffect(() => {
-    if (ready) load(month);
-  }, [ready, month, load]);
+ useEffect(() => {
+  if (ready && month) load(month);
+}, [ready, month, load]);
 
   async function addExpense() {
     setError(null);
