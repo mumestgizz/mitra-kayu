@@ -124,6 +124,9 @@ export default function Home() {
 </Link>
 {isOwner && (
   <>
+    <Link href="/dashboard" className="mr-3 text-amber-800 underline">
+      Dashboard
+    </Link>
     <Link href="/orders" className="mr-3 text-amber-800 underline">
       Pesanan
     </Link>
