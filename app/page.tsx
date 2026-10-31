@@ -119,10 +119,15 @@ export default function Home() {
           <p>
             {email} ({role})
           </p>
-          {isOwner && (
-  <Link href="/expenses" className="mr-3 text-amber-800 underline">
-    Pengeluaran
-  </Link>
+{isOwner && (
+  <>
+    <Link href="/products" className="mr-3 text-amber-800 underline">
+      Produk
+    </Link>
+    <Link href="/expenses" className="mr-3 text-amber-800 underline">
+      Pengeluaran
+    </Link>
+  </>
 )}
 <button onClick={logout} className="text-red-700 underline">
   Keluar
