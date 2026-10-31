@@ -67,7 +67,7 @@ export default function Orders() {
   const [error, setError] = useState<string | null>(null);
   const [products, setProducts] = useState<Product[]>([]);
   const [orders, setOrders] = useState<Order[]>([]);
-  const [filterStatus, setFilterStatus] = useState("all");
+  const [filterStatus, setFilterStatus] = useState("active");
 
   // New order form
   const [orderType, setOrderType] = useState<"ready_made" | "custom">("ready_made");
@@ -287,10 +287,14 @@ export default function Orders() {
     return <main className="p-6 text-gray-900">Memuat...</main>;
   }
 
-  const visibleOrders =
-    filterStatus === "all"
-      ? orders
-      : orders.filter((o) => o.status === filterStatus);
+const visibleOrders = orders.filter((o) => {
+  if (filterStatus === "all") return true;
+  if (filterStatus === "active")
+    return o.status !== "delivered" && o.status !== "cancelled";
+  if (filterStatus === "history")
+    return o.status === "delivered" || o.status === "cancelled";
+  return o.status === filterStatus;
+});
 
   const input = "rounded border border-gray-300 p-2 text-gray-900";
 
@@ -503,7 +507,9 @@ export default function Orders() {
           onChange={(e) => setFilterStatus(e.target.value)}
           className="rounded border border-gray-300 p-1 text-gray-900"
         >
-          <option value="all">Semua status</option>
+        <option value="active">Pesanan aktif</option>
+<option value="history">Riwayat (dikirim / dibatalkan)</option>
+<option value="all">Semua status</option>
           {STATUSES.map((s) => (
             <option key={s.value} value={s.value}>
               {s.label}
