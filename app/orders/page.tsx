@@ -3,6 +3,7 @@ import { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { supabase } from "../../lib/supabase";
+import PaymentPanel from "./PaymentPanel";
 
 const STATUSES = [
   { value: "waiting_payment", label: "Menunggu pembayaran" },
@@ -568,9 +569,10 @@ const visibleOrders = orders.filter((o) => {
             {o.notes && (
               <p className="mt-1 text-sm text-gray-600">Catatan: {o.notes}</p>
             )}
-            <p className="mt-2 font-bold">
-              Total: {rupiah(Number(o.total_price))}
-            </p>
+ <p className="mt-2 font-bold">
+  Total: {rupiah(Number(o.total_price))}
+</p>
+<PaymentPanel orderId={o.id} total={Number(o.total_price)} />
           </li>
         ))}
       </ul>
