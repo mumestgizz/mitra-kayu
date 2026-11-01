@@ -134,7 +134,7 @@ export default function Products() {
     <main className="min-h-screen bg-amber-50 p-6 text-gray-900">
       <div className="mb-4 flex items-center justify-between">
         <h1 className="text-2xl font-bold text-amber-900">Katalog Produk</h1>
-        <Link href="/" className="text-amber-800 underline">
+        <Link href="/stock" className="text-amber-800 underline">
           Kembali ke stok
         </Link>
       </div>

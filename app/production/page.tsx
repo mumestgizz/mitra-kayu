@@ -105,7 +105,7 @@ export default function Production() {
           <button onClick={load} className="text-amber-800 underline">
             Muat ulang
           </button>
-          <Link href="/" className="text-amber-800 underline">
+          <Link href="/stock" className="text-amber-800 underline">
             Kembali
           </Link>
         </div>

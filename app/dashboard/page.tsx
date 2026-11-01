@@ -150,7 +150,7 @@ export default function Dashboard() {
           <button onClick={loadAll} className="text-amber-800 underline">
             Muat ulang
           </button>
-          <Link href="/" className="text-amber-800 underline">
+          <Link href="/stock" className="text-amber-800 underline">
             Kembali ke stok
           </Link>
         </div>
